@@ -1,0 +1,42 @@
+static int findMax(List<List<Integer>> inputArray)
+    {
+        List list=new ArrayList();
+        int length=inputArray.size();
+        int max=0,index=0;
+        //System.out.print(length); 
+        list=inputArray.get(0);
+        int lengthList = list.size();
+        int [][] arr=new int[length][lengthList];
+        int []array =new int[99];
+        for(int countI=0;countI<length;countI++)
+        {
+            list=inputArray.get(countI);
+             for(int countJ=0;countJ<lengthList;countJ++)
+                {
+                    arr[countI][countJ]=(Integer)list.get(countJ);
+                }     
+        }
+        for(int countI=0;countI<length-2;countI++)
+        {
+            for(int countJ=0;countJ<lengthList-2;countJ++)
+                {
+                    index=countI*10+countJ;
+                    array[index]=arr[countI][countJ]+arr[countI][countJ+1]+arr[countI][countJ+2]+arr[countI+1][countJ+1]+arr[countI+2][countJ]+arr[countI+2][countJ+1]+arr[countI+2][countJ+2];
+                   // System.out.println(array[index]);
+                }
+            
+        }
+        for(int countI=0;countI<99;countI++)
+        {
+            if(array[countI]>max)
+            {
+                index=countI;
+                max=array[countI];
+            }
+        }
+        //System.out.println(index);
+        
+
+     return max;
+    }
+
